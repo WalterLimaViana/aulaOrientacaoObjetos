@@ -39,19 +39,33 @@ class Series(Programa):
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self.temporadas} temporadas : {self._likes} Likes'
 
+class Playlist:
+    def __int__(self, nome , programas):
+        self.nome = nome
+        self.programas = programas
 
+    def tamanho(self):
+        return len(self.programas)
 
 
 vingadores = Filme('Vingadores - guerra infinita', 2018, 160)
-vingadores.dar_like()
-vingadores.dar_like()
-
 atlanta = Series('Atlanta', 2018, 2)
+tmep = Filme('todo mundo em pânico', 1999, 100)
+demolidor = Series('Demolidor', 2016, 2)
+
+vingadores.dar_like()
+vingadores.dar_like()
+tmep.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+atlanta.dar_like()
+vingadores.dar_like()
 atlanta.dar_like()
 
 
-filmes_e_series = [vingadores, atlanta]
-for programa in filmes_e_series:
+filmes_e_series = [vingadores, atlanta, demolidor, tmep]
+playlist_fim_de_semana = Playlist('Fim de semana', filmes_e_series)
+for programa in playlist_fim_de_semana.programas:
     #detalhes = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
     #print(f'{programa.nome} - {detalhes} D - {programa.likes}')
     # programa.imprime()
