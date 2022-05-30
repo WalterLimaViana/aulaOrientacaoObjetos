@@ -42,7 +42,11 @@ class Series(Programa):
 class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome
-        self.programas = programas
+        self._programas = programas
+
+    def __getitem__(self, item):
+        return self._programas[item]
+
     @property
     def listagem(self):
         return self._programas
@@ -68,15 +72,15 @@ vingadores.dar_like()
 atlanta.dar_like()
 
 
-filmes_e_series = [vingadores, atlanta, demolidor, tmep]
-playlist_fim_de_semana = Playlist('Fim de semana', filmes_e_series)
+listinha = [vingadores, atlanta, demolidor, tmep]
+minha_playlist = Playlist('Fim de semana', listinha)
 
-print(f'Tamanho da playlist: {len(playlist_fim_de_semana.listagem)}')
+print(f'Tamanho da playlist: {len(minha_playlist.listagem)}')
 
-for programa in playlist_fim_de_semana:
+for programa in minha_playlist.listagem:
     #detalhes = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
     #print(f'{programa.nome} - {detalhes} D - {programa.likes}')
     # programa.imprime()
     print(programa)
-print(f'Está ou não na playlist? {demolidor in playlist_fim_de_semana.listagem}')
+print(f'Está ou não na playlist? {demolidor in minha_playlist}')
 
